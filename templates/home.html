@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Hind:400,700&amp;display=swap'><link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Proje</title>
+</head>
+<body>
+    <div>
+        <h3 class="mt-4 ml-5">Banka Müşterisi Ayrılma Tahmin Programı (Churn Modeling)</h3>
+   
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}"method="post">
+
+            <label for="range1">Kredi Skoru (350 - 850)</label> 
+            <input id="range1" type="range" name="CreditScore" min="350" max="850" required="required" />
+
+            <label for="range2">Yaş (18 - 92)</label> 
+            <input  id="range2" type="range" name="Age"  min="18" max="92"   required="required" />
+
+            <label for="range3">Müşteri Yaşı (0 - 10)</label> 
+            <input  id="range3" type="range" name="Tenure"  min="0" max="10"  required="required" />
+
+            <label for="range4">Balans (0 - 250898)</label> 
+            <input  id="range4" type="range" name="Balance"  min="0" max="250898"  required="required" />
+
+            <label for="range5">Erkek mi (0 - 1)</label> 
+            <input  id="range5" type="range" name="isMale"  min="0" max="1"   required="required" />
+
+            <label for="range6">Ürün Sayısı (1 - 4)</label> 
+            <input  id="range6" type="range" name="NumOfProducts"  min="1" max="4"   required="required" />
+
+            <label for="range7">Kredi Kartı Var mı? (0 - 1)</label> 
+            <input  id="range7" type="range" name="HasCrCard" min="0" max="1"  required="required" />
+
+            <label for="range8">Aktif Üye mi 0 - 1</label> 
+            <input  id="range8" type="range" name="IsActiveMember" min="0" max="1" required="required" />
+
+            <label for="range9">Tahmini Maaş 11 - 199999</label> 
+            <input  id="range9" type="range" name="EstimatedSalary" min="11" max="199999"  required="required" />
+
+            <label for="range10">Ülke Fransa mı? 0 - 1</label> 
+            <input  id="range10" type="range" name="Geography_France"  min="0" max="1"   required="required" />
+
+            <label for="range11">Ülke Almanya mı? 0 - 1</label> 
+            <input  id="range11" type="range" name="Geography_Germany" min="0" max="1" required="required" />
+
+            <label for="range12">Ülke İspanya mı? 0 - 1</label> 
+            <input  id="range12" type="range" name="Geography_Spain"  min="0" max="1"  required="required" />
+   
+            <button type="submit" class="btn btn-primary btn-block btn-large">ÖN GÖR</button>
+            <br>
+            <br>
+            {{ predition_text }}
+        </form>
+   
+      
+      
+   
+    </div>
+   <script src="/static/script.js"></script>
+    <script  src="{{ url_for('static', filename='/script.js') }}"></script>
+   </body>
+</html>
